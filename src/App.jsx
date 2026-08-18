@@ -2,21 +2,34 @@ import { useState } from "react";
 import questions from "./questions";
 import "./App.css";
 
+const QUESTIONS_PER_TEST = 30;
+
 function App() {
-  // Current question
+  // Current test: 0, 1, 2
+  const [currentTest, setCurrentTest] = useState(0);
+
+  // Current question inside current test
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
   // Selected answer
   const [selectedAnswer, setSelectedAnswer] = useState("");
 
-  // All user answers
+  // Answers of current test
   const [userAnswers, setUserAnswers] = useState([]);
 
   // Show result
   const [showResult, setShowResult] = useState(false);
 
+  // Get current 30 questions
+  const startIndex = currentTest * QUESTIONS_PER_TEST;
+
+  const currentQuestions = questions.slice(
+    startIndex,
+    startIndex + QUESTIONS_PER_TEST
+  );
+
   // Current question
-  const question = questions[currentQuestion];
+  const question = currentQuestions[currentQuestion];
 
   // Select answer
   const handleAnswer = (option) => {
@@ -25,40 +38,31 @@ function App() {
 
   // Next / Submit
   const handleNext = () => {
-    // Agar answer select nahi kiya
     if (!selectedAnswer) {
       alert("Please select an answer!");
       return;
     }
 
-    // Save current answer
+    // Save answer
     const updatedAnswers = [...userAnswers];
 
     updatedAnswers[currentQuestion] = selectedAnswer;
 
     setUserAnswers(updatedAnswers);
 
-    // Agar last question nahi hai
-    if (currentQuestion < questions.length - 1) {
+    // More questions in this test
+    if (currentQuestion < currentQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer("");
     } else {
-      // Last question
+      // 30 questions completed
       setShowResult(true);
     }
   };
 
-  // Restart test
-  const restartTest = () => {
-    setCurrentQuestion(0);
-    setSelectedAnswer("");
-    setUserAnswers([]);
-    setShowResult(false);
-  };
-
-  // Calculate score
+  // Calculate current test score
   const calculateScore = () => {
-    return questions.reduce((score, question, index) => {
+    return currentQuestions.reduce((score, question, index) => {
       if (userAnswers[index] === question.answer) {
         return score + 1;
       }
@@ -67,24 +71,53 @@ function App() {
     }, 0);
   };
 
-  // Result screen
+  // Start next 30 questions
+  const nextTest = () => {
+    setCurrentTest(currentTest + 1);
+    setCurrentQuestion(0);
+    setSelectedAnswer("");
+    setUserAnswers([]);
+    setShowResult(false);
+  };
+
+  // Restart everything
+  const restartQuiz = () => {
+    setCurrentTest(0);
+    setCurrentQuestion(0);
+    setSelectedAnswer("");
+    setUserAnswers([]);
+    setShowResult(false);
+  };
+
+  // Result Screen
   if (showResult) {
     const score = calculateScore();
 
-    const wrongAnswers = questions.length - score;
+    const wrongAnswers =
+      currentQuestions.length - score;
 
     const percentage = Math.round(
-      (score / questions.length) * 100
+      (score / currentQuestions.length) * 100
     );
+
+    // Is this the last test?
+    const isLastTest =
+      startIndex + currentQuestions.length >=
+      questions.length;
 
     return (
       <div className="app">
         <div className="result-container">
 
+          {/* Result Header */}
           <div className="result-header">
-            <h1>🎉 Test Completed!</h1>
+            <h1>🎉 Test {currentTest + 1} Completed!</h1>
 
-            <p>Here is your final result</p>
+            <p>
+              You completed questions{" "}
+              {startIndex + 1} -{" "}
+              {startIndex + currentQuestions.length}
+            </p>
           </div>
 
           {/* Result Summary */}
@@ -92,7 +125,7 @@ function App() {
 
             <div className="result-box">
               <h3>Total</h3>
-              <p>{questions.length}</p>
+              <p>{currentQuestions.length}</p>
             </div>
 
             <div className="result-box correct-box">
@@ -117,65 +150,110 @@ function App() {
 
             <h2>📋 Question Review</h2>
 
-            {questions.map((question, index) => {
+            {currentQuestions.map(
+              (question, index) => {
 
-              const userAnswer = userAnswers[index];
+                const userAnswer =
+                  userAnswers[index];
 
-              const isCorrect =
-                userAnswer === question.answer;
+                const isCorrect =
+                  userAnswer === question.answer;
 
-              return (
-                <div
-                  className={`review-card ${
-                    isCorrect ? "correct" : "wrong"
-                  }`}
-                  key={question.id}
-                >
+                return (
+                  <div
+                    className={`review-card ${
+                      isCorrect
+                        ? "correct"
+                        : "wrong"
+                    }`}
+                    key={question.id || index}
+                  >
 
-                  <h3>
-                    {index + 1}. {question.question}
-                  </h3>
+                    <h3>
+                      {startIndex + index + 1}.{" "}
+                      {question.question}
+                    </h3>
 
-                  <p>
-                    <strong>Your Answer:</strong>{" "}
-                    <span
-                      className={
-                        isCorrect
-                          ? "correct-text"
-                          : "wrong-text"
-                      }
-                    >
-                      {userAnswer || "Not answered"}
-                    </span>
-                  </p>
-
-                  <p>
-                    <strong>Correct Answer:</strong>{" "}
-                    <span className="correct-text">
-                      {question.answer}
-                    </span>
-                  </p>
-
-                  <div className="answer-status">
-                    {isCorrect ? (
-                      <span>✅ Correct</span>
-                    ) : (
-                      <span>❌ Wrong</span>
+                    {/* Question Image */}
+                    {question.image && (
+                      <img
+                        src={question.image}
+                        alt="Question"
+                        className="review-image"
+                      />
                     )}
-                  </div>
 
-                </div>
-              );
-            })}
+                    <p>
+                      <strong>
+                        Your Answer:
+                      </strong>{" "}
+
+                      <span
+                        className={
+                          isCorrect
+                            ? "correct-text"
+                            : "wrong-text"
+                        }
+                      >
+                        {userAnswer ||
+                          "Not answered"}
+                      </span>
+                    </p>
+
+                    <p>
+                      <strong>
+                        Correct Answer:
+                      </strong>{" "}
+
+                      <span className="correct-text">
+                        {question.answer}
+                      </span>
+                    </p>
+
+                    <div className="answer-status">
+                      {isCorrect ? (
+                        <span>
+                          ✅ Correct
+                        </span>
+                      ) : (
+                        <span>
+                          ❌ Wrong
+                        </span>
+                      )}
+                    </div>
+
+                  </div>
+                );
+              }
+            )}
 
           </div>
 
-          {/* Restart */}
+          {/* Buttons */}
+
+          {!isLastTest ? (
+            <button
+              className="next-btn"
+              onClick={nextTest}
+            >
+              Next 30 Questions →
+            </button>
+          ) : (
+            <div className="final-message">
+              <h2>🏆 All Tests Completed!</h2>
+
+              <p>
+                You have completed all{" "}
+                {questions.length} questions.
+              </p>
+            </div>
+          )}
+
           <button
             className="restart-btn"
-            onClick={restartTest}
+            onClick={restartQuiz}
           >
-            🔄 Restart Test
+            🔄 Restart Quiz
           </button>
 
         </div>
@@ -183,7 +261,7 @@ function App() {
     );
   }
 
-  // Quiz screen
+  // Quiz Screen
   return (
     <div className="app">
 
@@ -192,10 +270,22 @@ function App() {
         {/* Header */}
         <div className="quiz-header">
 
-          <h1>📝 MCQ Quiz</h1>
+          <h1>
+            📝 MCQ Quiz
+          </h1>
+
+          <h2>
+            Test {currentTest + 1}
+          </h2>
 
           <p>
             Question {currentQuestion + 1} of{" "}
+            {currentQuestions.length}
+          </p>
+
+          <p>
+            Overall:{" "}
+            {startIndex + currentQuestion + 1} /{" "}
             {questions.length}
           </p>
 
@@ -209,7 +299,7 @@ function App() {
             style={{
               width: `${
                 ((currentQuestion + 1) /
-                  questions.length) *
+                  currentQuestions.length) *
                 100
               }%`,
             }}
@@ -223,6 +313,15 @@ function App() {
           <h2>
             {question.question}
           </h2>
+
+          {/* Question Image */}
+          {question.image && (
+            <img
+              src={question.image}
+              alt="Question"
+              className="question-image"
+            />
+          )}
 
         </div>
 
@@ -250,7 +349,9 @@ function App() {
                   )}
                 </span>
 
-                <span>{option}</span>
+                <span>
+                  {option}
+                </span>
 
               </button>
 
@@ -264,7 +365,8 @@ function App() {
           className="next-btn"
           onClick={handleNext}
         >
-          {currentQuestion === questions.length - 1
+          {currentQuestion ===
+          currentQuestions.length - 1
             ? "Submit Test"
             : "Next Question →"}
         </button>

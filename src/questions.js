@@ -1,5 +1,80 @@
 const questions = [
   {
+    question: "No próximo entroncamento, o motorista deve ceder a passagem?",
+    image: "/images/73.jpg",
+    options: [
+      "Sim.",
+      "Não.",
+    ],
+    answer: "Não.",
+  },
+
+  {
+    question: "Quando um peão atravessa numa passagem para peões, o motorista deve:",
+    image: "/images/71.jpg",
+    options: [
+      "Reduzir a velocidade, mas continuar.",
+      "Acelerar para passar antes do peão",
+      "Parar e deixar o peão atravessar.",
+    ],
+    answer: "Parar e deixar o peão atravessar.",
+  },
+
+  {
+    question: "Quem deve avançar primeiro num cruzamento sem sinalização:",
+    image: "/images/70.jpg",
+    options: [
+      "O veículo mais rápido.",
+      "O veículo que circula pela esquerda",
+      "O veículo que circula pela direita.",
+    ],
+    answer: "O veículo que circula pela direita.",
+  },
+
+  {
+    question: "O que deve fazer perante este sinal?",
+    image: "/images/69.jpg",
+    options: [
+      "Ceder a passagem a todos os veículos.",
+      "Avançar em primeiro lugar.",
+      "Manter a velocidade.",
+    ],
+    answer: "Ceder a passagem a todos os veículos.",
+  },
+
+
+  {
+    question: "Os sinais verticais de obrigação são:",
+    options: [
+      "Circulares com fundo azul.",
+      "Retangulares com fundo verde.",
+      "Triangulares com borda vermelha.",
+    ],
+    answer: "Circulares com fundo azul.",
+  },
+
+  {
+    question: "O que deve respeitar em primeiro lugar?",
+    options: [
+      "Os sinais luminosos.",
+      "As marcas rodoviárias.",
+      "As ordens da polícia.",
+    ],
+    answer: "As ordens da polícia.",
+  },
+
+  {
+    question: "O sinal com luz amarela está intermitente, pelo que o motorista:",
+    image: "/images/66.jpg",
+    options: [
+      "Deve parar.",
+      "Deve acelerar.",
+      "Pode passar, mas com cuidado.",
+    ],
+    answer: "Pode passar, mas com cuidado.",
+  },
+
+   {
     question: "Uma condução defensiva é:",
     options: [
       "Estar atento aos outros condutores, antecipando situações de risco.",
@@ -415,6 +490,470 @@ const questions = [
       "Prevenir, alertar e socorrer .",
     ],
     answer: "Prevenir, alertar e socorrer .",
+  },
+
+  {
+    question: "O sinal indica:",
+    image: "/images/65.jpg",
+    options: [
+      "Passagem de peões",
+      "A existência de um túnel.",
+      "Entrada num parque de estacionamento.",
+    ],
+    answer: "A existência de um túnel.",
+  },
+
+  
+  {
+    question: "O sinal indica:",
+    image: "/images/64.jpg",
+    options: [
+      "Estacionamento autorizado.",
+      "Estacionamento proibido.",
+      "Apenas paragem permitida.",
+    ],
+    answer: "Estacionamento autorizado.",
+  },
+
+  
+  {
+    question: "O que deve fazer perante um sinal de STOP?",
+    image: "/images/61.jpg",
+    options: [
+      "Parar apenas se vier outro veículo.",
+      "Parar obrigatoriamente antes de avançar.",
+      "Reduzir a velocidade",
+    ],
+    answer: "Parar obrigatoriamente antes de avançar.",
+  },
+
+  
+  {
+    question: "Quando a intensidade do trânsito aumenta, a velocidade deve:",
+    options: [
+      "Diminuir.",
+      "Aumentar.",
+      "Ser mantida.",
+    ],
+    answer: "Diminuir.",
+  },
+
+  
+  {
+    question: "Quando a visibilidade é reduzida, para além de utilizar as luzes, deve:",
+    options: [
+      "Continuar com a mesma velocidade.",
+      "Parar o veículo.",
+      "Reduzir a velocidade e aumentar a distância para o veículo da frente.",
+    ],
+    answer: "Reduzir a velocidade e aumentar a distância para o veículo da frente.",
+  },
+
+  
+  {
+    question: "Quando o piso está escorregadio, o motorista deve:",
+    options: [
+      "Travar bruscamente.",
+      "Reduzir a velocidade e evitar manobras bruscas.",
+      "Aumentar a velocidade.",
+    ],
+    answer: "Reduzir a velocidade e evitar manobras bruscas.",
+  },
+
+  
+  {
+    question: "A velocidade deve ser ajustada:",
+    options: [
+      "Apenas ao limite máximo permitido.",
+      "Às condições da estrada e do trânsito.",
+      "À vontade do condutor.",
+    ],
+    answer: "Às condições da estrada e do trânsito.",
+  },
+
+  
+  {
+    question: "O condutor da bicicleta deve ceder a passagem?",
+    image: "/images/53.jpg",
+    options: [
+      "Sim, porque a bicicleta se apresenta pela esquerda.",
+      "Não, porque a bicicleta circula na rotunda.",
+      "Apenas se houver veículos à sua frente.",
+    ],
+    answer: "Não, porque a bicicleta circula na rotunda.",
+  },
+
+  
+  {
+    question: "Em rotundas, pode circular na via mais à direita:",
+    options: [
+      "Apenas para sair na primeira saída.",
+      "Sempre, independentemente da saída.",
+    ],
+    answer: "Apenas para sair na primeira saída.",
+  },
+
+  
+  {
+    question: "Ao circular numa rotunda, o motorista deve saber que:",
+    options: [
+      "Todos os veículos entram ao mesmo tempo.",
+      "Os veículos em serviço de urgência devem ceder a passagem aos veículos que circulam na rotunda.",
+      "Deve ceder a passagem aos veículos em serviço de urgência que entram na rotunda.",
+    ],
+    answer: "Deve ceder a passagem aos veículos em serviço de urgência que entram na rotunda.",
+  },
+
+  
+  {
+    question: "Para mudar de via de circulação dentro de uma rotunda, o motorista deve:",
+    options: [
+      "Mudar de via sem sinalizar.",
+      "Sinalizar e garantir que a manobra é segura.",
+      "Mudar rapidamente para sair mais depressa.",
+    ],
+    answer: "Sinalizar e garantir que a manobra é segura.",
+  },
+
+  
+  {
+    question: "O motorista deve sinalizar a saída de uma rotunda:",
+    options: [
+      "Ao aproximar-se da saída.",
+      "Não é necessário sinalizar.",
+      "Apenas se houver trânsito intenso.",
+    ],
+    answer: "Ao aproximar-se da saída.",
+  },
+
+  
+  {
+    question: "Ao entrar numa rotunda deve:",
+    image: "/images/47.jpg",
+    options: [
+      "Reduzir a velocidade e avançar sem parar.",
+      "Avançar em primeiro lugar, porque tem prioridade de passagem.",
+      "Ceder passagem aos veículos que já circulam na rotunda.",
+    ],
+    answer: "Ceder passagem aos veículos que já circulam na rotunda.",
+  },
+
+  
+  {
+    question: "Ao ultrapassar uma bicicleta, deve manter uma distância mínima lateral?",
+    options: [
+      "Sim, de 1,5 metros.",
+      "Sim, de 1 metro",
+      "Não",
+    ],
+    answer: "Sim, de 1,5 metros.",
+  },
+
+  
+  {
+    question: "É permitido ultrapassar em curvas com visibilidade reduzida?",
+    options: [
+      "Sim, é permitido.",
+      "É proibido ultrapassar em curvas com visibilidade reduzida.",
+      "Passar rapidamente antes que outro veículo chegue.",
+    ],
+    answer: "É proibido ultrapassar em curvas com visibilidade reduzida.",
+  },
+
+  
+  {
+    question: "O que deve fazer antes de iniciar uma ultrapassagem? ",
+    options: [
+      "Verificar se há espaço suficiente e visibilidade.",
+      "Aumentar a velocidade.",
+      "Aproximar-se ao máximo do veículo da frente.",
+    ],
+    answer: "Verificar se há espaço suficiente e visibilidade.",
+  },
+
+  
+  {
+    question: "Quando é permitido ultrapassar pela direita?",
+    options: [
+      "Quando o veículo da frente circula lentamente.",
+      "Quando o veículo da frente sinaliza que vai virar à esquerda.",
+      "Em qualquer situação",
+    ],
+    answer: "Quando o veículo da frente sinaliza que vai virar à esquerda.",
+  },
+
+  
+  {
+    question: "Na comunicação com os passageiros é importante:",
+    options: [
+      "Fazer perguntas durante toda a conversa",
+      "Ouvir para compreender.",
+      "Falar rapidamente para terminar a conversa.",
+    ],
+    answer: "Ouvir para compreender.",
+  },
+
+  
+  {
+    question: "Um motorista tem um comportamento profissional quando:",
+    options: [
+      "É apressado e impaciente durante a condução.",
+      "Ignora os pedidos dos passageiros.",
+      "É educado, respeita os passageiros e atende às suas necessidades.",
+    ],
+    answer: "É educado, respeita os passageiros e atende às suas necessidades.",
+  },
+
+  
+  {
+    question: "Chamamos feedback:",
+    options: [
+      "À resposta ou reação da pessoa à mensagem.",
+      "Ao início de uma conversa.",
+      "À forma como utilizamos o tom de voz.",
+    ],
+    answer: "À resposta ou reação da pessoa à mensagem.",
+  },
+
+  
+  {
+    question: "Quando se pode dizer que a comunicação tem sucesso?",
+    options: [
+      "Quando se fala muito rápido.",
+      "Quando a mensagem é compreendida.",
+      "Quando ninguém responde.",
+    ],
+    answer: "Quando a mensagem é compreendida.",
+  },
+
+  
+  {
+    question: "Um motorista deve comportar-se de forma?",
+    options: [
+      "Agressiva.",
+      "Passiva.",
+      "Assertiva.",
+    ],
+    answer: "Assertiva.",
+  },
+
+  
+  {
+    question: "Uma das funções importantes da comunicação é transmitir conhecimento.",
+    options: [
+      "Verdadeiro",
+      "Falso",
+    ],
+    answer: "Verdadeiro",
+  },
+
+  
+  {
+    question: "O que é a comunicação verbal?",
+    options: [
+      "Usar gestos e sinais para comunicar.",
+      "Falar ou escrever para transmitir uma mensagem.",
+      "Ficar em silêncio.",
+    ],
+    answer: "Falar ou escrever para transmitir uma mensagem.",
+  },
+
+  
+  {
+    question: "O que é o 'ruído' na comunicação?",
+    options: [
+      "Uma conversa entre duas pessoas.",
+      "Algo que dificulta a compreensão da mensagem.",
+      "O som do rádio.",
+    ],
+    answer: "Algo que dificulta a compreensão da mensagem.",
+  },
+
+  
+  {
+    question: "Como agir com um passageiro impaciente ou agressivo?",
+    options: [
+      "Responder com a mesma agressividade.",
+      "Manter a calma, ser cordial e evitar o conflito.",
+      "Ignorar o passageiro e continuar a viagem.",
+    ],
+    answer: "Manter a calma, ser cordial e evitar o conflito.",
+  },
+
+   {
+    question: "O processo de comunicação requer, no mínimo:",
+    options: [
+      "Um emissor.",
+      "Um recetor.",
+      "Um emissor e um recetor.",
+    ],
+    answer: "Um emissor e um recetor.",
+  },
+
+  
+  {
+    question: "O primeiro contacto com o motorista ajuda a criar uma boa impressão sobre o serviço.",
+    options: [
+      "Verdadeiro",
+      "Falso",
+    ],
+    answer: "Verdadeiro",
+  },
+
+  
+  {
+    question: "Qual é o tempo máximo permitido para veículos TVDE operarem antes de passar por uma inspeção técnica?",
+    options: [
+      "1 ano após a matrícula e, depois, anualmente",
+      "2 anos após a matrícula e, depois, bienalmente",
+      "Apenas no prazo estipulado pelo IMT",
+    ],
+    answer: "1 ano após a matrícula e, depois, anualmente",
+  },
+
+  
+  {
+    question: "Quem é responsável pela fiscalização do cumprimento das normas no serviço TVDE?",
+    options: [
+      "GNR e IMT",
+      "PSP, GNR e IMT",
+      "GNR e PSP",
+    ],
+    answer: "PSP, GNR e IMT",
+  },
+
+  
+  {
+    question: "Para se tornar motorista TVDE, tem que ter carta de condução da categoria B há mais de:",
+    options: [
+      "1 ano",
+      "2 anos",
+      "3 anos",
+    ],
+    answer: "3 anos",
+  },
+
+  
+  {
+    question: "Qual é a idade máxima permitida para veículos utilizados no serviço TVDE?",
+    options: [
+      "5 anos",
+      "7 anos",
+      "10 anos",
+    ],
+    answer: "7 anos",
+  },
+
+  
+  {
+    question: "Conduzir com chuva tem como resultado:",
+    options: [
+      "O aumento de aderência ao piso.",
+      "A diminuição da distância de paragem.",
+      "A redução da visibilidade.",
+    ],
+    answer: "A redução da visibilidade.",
+  },
+
+   {
+    question: "O processo de comunicação prevê a existência mínima de:",
+    options: [
+      "Um emissor.",
+      "Um recetor.",
+      "Um emissor e um recetor.",
+    ],
+    answer: "Um emissor e um recetor.",
+  },
+
+  // extra add
+
+  {
+    question: "O que se entende por ruídos durante o processo de comunicação?",
+    options: [
+      "Algo que interfere com a mensagem enviada, mas que não altera o seu significado.",
+      "Algo que interfere com a mensagem enviada, bloqueando e alterando o seu significado.",
+      "Algo que interfere com a mensagem enviada que bloqueia mas não altera o seu significado.",
+    ],
+    answer: "Algo que interfere com a mensagem enviada, bloqueando e alterando o seu significado.",
+  },
+
+  {
+    question: "Fazem parte das barreiras internas à comunicação:",
+    options: [
+      "Diferenças sociais, culturais, sexuais, os julgamentos e as suposições.",
+      "Apenas as diferenças sociais, culturais e sexuais.",
+      "Unicamente as diferenças sociais e culturais.",
+    ],
+    answer: "Diferenças sociais, culturais, sexuais, os julgamentos e as suposições.",
+  },
+
+  {
+    question: "Em que situação é permitido utilizar veículos com matrícula estrangeira no serviço TVDE?",
+    options: [
+      "Em nenhum caso",
+      "Somente para viagens internacionais",
+      "Com autorização do IMT",
+    ],
+    answer: "Em nenhum caso",
+  },
+
+  {
+    question: "Qual é o tempo máximo de condução permitido para motoristas TVDE num período de 24 horas?",
+    options: [
+      "8 horas",
+      "10 horas",
+      "12 horas",
+    ],
+    answer: "10 horas",
+  },
+
+  {
+    question: "Os veículos TVDE podem ter publicidade no exterior?",
+    options: [
+      "Sim, sem restrições",
+      "Sim, desde que seja aprovada pelo IMT",
+      "Não, é proibido",
+    ],
+    answer: "Não, é proibido",
+  },
+
+  {
+    question: "Os motoristas TVDE estão autorizados a recolher passageiros diretamente na via pública?",
+    options: [
+      "Sim, em qualquer situação",
+      "Não, apenas mediante reserva na plataforma eletrónica",
+      "Sim, exceto em praças de táxis",
+    ],
+    answer: "Não, apenas mediante reserva na plataforma eletrónica",
+  },
+
+  {
+    question: "Dos seguintes combustíveis, qual é o menos poluente?",
+    options: [
+      "Gasolina sem chumbo.",
+      "Gás.",
+      "Gasolina com chumbo.",
+    ],
+    answer: "Gás.",
+  },
+
+  {
+    question: "Os motoristas TVDE podem recolher passageiros diretamente na via pública sem reserva prévia.",
+    options: [
+      "Falso",
+      "Verdadeiro",
+    ],
+    answer: "Falso",
+  },
+
+  {
+    question: "A via reservada a veículos de transporte público, por veículos TVDE é:",
+    options: [
+      "Permitido em vias de trânsito rápidas",
+      "Proibida a circulação",
+      "Permitido apenas em algumas cidades",
+    ],
+    answer: "Proibida a circulação",
   },
 
 ];
