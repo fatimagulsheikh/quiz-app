@@ -4,7 +4,22 @@ import "./App.css";
 
 const QUESTIONS_PER_TEST = 30;
 
+// 🔐 Quiz Password
+const QUIZ_PASSWORD = "033220";
+
 function App() {
+  // =========================
+  // PASSWORD
+  // =========================
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  // =========================
+  // QUIZ STATES
+  // =========================
+
   // Current test: 0, 1, 2
   const [currentTest, setCurrentTest] = useState(0);
 
@@ -20,8 +35,78 @@ function App() {
   // Show result
   const [showResult, setShowResult] = useState(false);
 
-  // Get current 30 questions
-  const startIndex = currentTest * QUESTIONS_PER_TEST;
+  // =========================
+  // PASSWORD LOGIN
+  // =========================
+
+  const handleLogin = () => {
+    if (password === QUIZ_PASSWORD) {
+      setIsAuthenticated(true);
+      setPasswordError("");
+    } else {
+      setPasswordError("Incorrect password. Please try again.");
+    }
+  };
+
+  // =========================
+  // PASSWORD SCREEN
+  // =========================
+
+  if (!isAuthenticated) {
+    return (
+      <div className="app">
+        <div className="quiz-container password-container">
+
+          <div className="quiz-header">
+            <h1>🔐 Quiz Access</h1>
+
+            <h2>Enter Password</h2>
+
+            <p>
+              Please enter the password to start the quiz.
+            </p>
+          </div>
+
+          <input
+            type="password"
+            className="password-input"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setPasswordError("");
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleLogin();
+              }
+            }}
+          />
+
+          {passwordError && (
+            <p className="password-error">
+              ❌ {passwordError}
+            </p>
+          )}
+
+          <button
+            className="next-btn"
+            onClick={handleLogin}
+          >
+            🔓 Unlock Quiz
+          </button>
+
+        </div>
+      </div>
+    );
+  }
+
+  // =========================
+  // GET CURRENT QUESTIONS
+  // =========================
+
+  const startIndex =
+    currentTest * QUESTIONS_PER_TEST;
 
   const currentQuestions = questions.slice(
     startIndex,
@@ -29,14 +114,21 @@ function App() {
   );
 
   // Current question
-  const question = currentQuestions[currentQuestion];
+  const question =
+    currentQuestions[currentQuestion];
 
-  // Select answer
+  // =========================
+  // SELECT ANSWER
+  // =========================
+
   const handleAnswer = (option) => {
     setSelectedAnswer(option);
   };
 
-  // Next / Submit
+  // =========================
+  // NEXT / SUBMIT
+  // =========================
+
   const handleNext = () => {
     if (!selectedAnswer) {
       alert("Please select an answer!");
@@ -46,32 +138,48 @@ function App() {
     // Save answer
     const updatedAnswers = [...userAnswers];
 
-    updatedAnswers[currentQuestion] = selectedAnswer;
+    updatedAnswers[currentQuestion] =
+      selectedAnswer;
 
     setUserAnswers(updatedAnswers);
 
     // More questions in this test
-    if (currentQuestion < currentQuestions.length - 1) {
+    if (
+      currentQuestion <
+      currentQuestions.length - 1
+    ) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer("");
     } else {
-      // 30 questions completed
+      // Test completed
       setShowResult(true);
     }
   };
 
-  // Calculate current test score
-  const calculateScore = () => {
-    return currentQuestions.reduce((score, question, index) => {
-      if (userAnswers[index] === question.answer) {
-        return score + 1;
-      }
+  // =========================
+  // CALCULATE SCORE
+  // =========================
 
-      return score;
-    }, 0);
+  const calculateScore = () => {
+    return currentQuestions.reduce(
+      (score, question, index) => {
+        if (
+          userAnswers[index] ===
+          question.answer
+        ) {
+          return score + 1;
+        }
+
+        return score;
+      },
+      0
+    );
   };
 
-  // Start next 30 questions
+  // =========================
+  // NEXT TEST
+  // =========================
+
   const nextTest = () => {
     setCurrentTest(currentTest + 1);
     setCurrentQuestion(0);
@@ -80,7 +188,10 @@ function App() {
     setShowResult(false);
   };
 
-  // Restart everything
+  // =========================
+  // RESTART QUIZ
+  // =========================
+
   const restartQuiz = () => {
     setCurrentTest(0);
     setCurrentQuestion(0);
@@ -89,7 +200,10 @@ function App() {
     setShowResult(false);
   };
 
-  // Result Screen
+  // =========================
+  // RESULT SCREEN
+  // =========================
+
   if (showResult) {
     const score = calculateScore();
 
@@ -102,22 +216,29 @@ function App() {
 
     // Is this the last test?
     const isLastTest =
-      startIndex + currentQuestions.length >=
+      startIndex +
+        currentQuestions.length >=
       questions.length;
 
     return (
       <div className="app">
+
         <div className="result-container">
 
           {/* Result Header */}
           <div className="result-header">
-            <h1>🎉 Test {currentTest + 1} Completed!</h1>
+
+            <h1>
+              🎉 Test {currentTest + 1} Completed!
+            </h1>
 
             <p>
               You completed questions{" "}
               {startIndex + 1} -{" "}
-              {startIndex + currentQuestions.length}
+              {startIndex +
+                currentQuestions.length}
             </p>
+
           </div>
 
           {/* Result Summary */}
@@ -125,7 +246,9 @@ function App() {
 
             <div className="result-box">
               <h3>Total</h3>
-              <p>{currentQuestions.length}</p>
+              <p>
+                {currentQuestions.length}
+              </p>
             </div>
 
             <div className="result-box correct-box">
@@ -148,7 +271,9 @@ function App() {
           {/* Question Review */}
           <div className="review">
 
-            <h2>📋 Question Review</h2>
+            <h2>
+              📋 Question Review
+            </h2>
 
             {currentQuestions.map(
               (question, index) => {
@@ -157,7 +282,8 @@ function App() {
                   userAnswers[index];
 
                 const isCorrect =
-                  userAnswer === question.answer;
+                  userAnswer ===
+                  question.answer;
 
                 return (
                   <div
@@ -166,11 +292,16 @@ function App() {
                         ? "correct"
                         : "wrong"
                     }`}
-                    key={question.id || index}
+                    key={
+                      question.id || index
+                    }
                   >
 
                     <h3>
-                      {startIndex + index + 1}.{" "}
+                      {startIndex +
+                        index +
+                        1}
+                      .{" "}
                       {question.question}
                     </h3>
 
@@ -240,12 +371,16 @@ function App() {
             </button>
           ) : (
             <div className="final-message">
-              <h2>🏆 All Tests Completed!</h2>
+
+              <h2>
+                🏆 All Tests Completed!
+              </h2>
 
               <p>
                 You have completed all{" "}
                 {questions.length} questions.
               </p>
+
             </div>
           )}
 
@@ -257,11 +392,15 @@ function App() {
           </button>
 
         </div>
+
       </div>
     );
   }
 
-  // Quiz Screen
+  // =========================
+  // QUIZ SCREEN
+  // =========================
+
   return (
     <div className="app">
 
@@ -279,14 +418,17 @@ function App() {
           </h2>
 
           <p>
-            Question {currentQuestion + 1} of{" "}
+            Question{" "}
+            {currentQuestion + 1} of{" "}
             {currentQuestions.length}
           </p>
 
           <p>
             Overall:{" "}
-            {startIndex + currentQuestion + 1} /{" "}
-            {questions.length}
+            {startIndex +
+              currentQuestion +
+              1}{" "}
+            / {questions.length}
           </p>
 
         </div>

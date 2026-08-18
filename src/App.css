@@ -830,3 +830,49 @@ button {
     padding: 15px;
   }
 }
+
+.password-container {
+  max-width: 500px;
+  text-align: center;
+}
+
+.password-input {
+  width: 100%;
+
+  padding: 16px 18px;
+
+  border: 2px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  outline: none;
+
+  font-size: 16px;
+
+  font-family: inherit;
+
+  background: #ffffff;
+
+  transition: 0.25s ease;
+}
+
+.password-input:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+.password-input::placeholder {
+  color: #9ca3af;
+}
+
+.password-error {
+  margin-top: 12px;
+
+  color: #dc2626;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
