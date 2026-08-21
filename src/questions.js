@@ -868,92 +868,97 @@ const questions = [
   // extra add
 
   {
-    question: "O que se entende por ruídos durante o processo de comunicação?",
+    question: "O condutor da bicicleta deve ceder a passagem?",
+    image: "/images/53.jpg",
     options: [
-      "Algo que interfere com a mensagem enviada, mas que não altera o seu significado.",
-      "Algo que interfere com a mensagem enviada, bloqueando e alterando o seu significado.",
-      "Algo que interfere com a mensagem enviada que bloqueia mas não altera o seu significado.",
+      "Sim, porque a bicicleta se apresenta pela esquerda.",
+      "Não, porque a bicicleta circula na rotunda.",
+      "Apenas se houver veículos à sua frente.",
     ],
-    answer: "Algo que interfere com a mensagem enviada, bloqueando e alterando o seu significado.",
+    answer: "Não, porque a bicicleta circula na rotunda.",
   },
 
   {
-    question: "Fazem parte das barreiras internas à comunicação:",
+    question: "Neste local, posso transitar a 50 Km/h?",
+    image: "/images/260.jpg",
     options: [
-      "Diferenças sociais, culturais, sexuais, os julgamentos e as suposições.",
-      "Apenas as diferenças sociais, culturais e sexuais.",
-      "Unicamente as diferenças sociais e culturais.",
+      "Não, porque a sinalização vertical o proíbe.",
+      "Sim, porque dentro das localidades esta é a velocidade mínima obrigatória.",
+      "Sim, porque o pavimento está em boas condições.",
     ],
-    answer: "Diferenças sociais, culturais, sexuais, os julgamentos e as suposições.",
+    answer: "Não, porque a sinalização vertical o proíbe.",
   },
 
   {
-    question: "Em que situação é permitido utilizar veículos com matrícula estrangeira no serviço TVDE?",
+    question: "Os sinais de proibição indicam:",
     options: [
-      "Em nenhum caso",
-      "Somente para viagens internacionais",
-      "Com autorização do IMT",
+      "Informações úteis.",
+      "Obrigações a cumprir.",
+      "Restrições ou limites.",
     ],
-    answer: "Em nenhum caso",
+    answer: "Restrições ou limites.",
   },
 
   {
-    question: "Qual é o tempo máximo de condução permitido para motoristas TVDE num período de 24 horas?",
+    question: "O sinal com luz amarela está intermitente, pelo que o motorista:",
+    image: "/images/66.jpg",
     options: [
-      "8 horas",
-      "10 horas",
-      "12 horas",
+      "Deve parar.",
+      "Deve acelerar.",
+      "Pode passar, mas com cuidado.",
     ],
-    answer: "10 horas",
+    answer: "Pode passar, mas com cuidado.",
+  },
+
+  
+  {
+    question: "Numa ultrapassagem, o motorista deve voltar à sua via de trânsito:",
+    options: [
+      "Após aumentar a velocidade.",
+      "Logo após concluir a manobra.",
+      "Assim que o veículo ultrapassado fique visível no retrovisor.",
+    ],
+    answer: "Assim que o veículo ultrapassado fique visível no retrovisor.",
   },
 
   {
-    question: "Os veículos TVDE podem ter publicidade no exterior?",
+    question: "O tempo máximo permitido para condução de motoristas TVDE é de 10 horas num período de 24 horas.",
     options: [
-      "Sim, sem restrições",
-      "Sim, desde que seja aprovada pelo IMT",
-      "Não, é proibido",
-    ],
-    answer: "Não, é proibido",
-  },
-
-  {
-    question: "Os motoristas TVDE estão autorizados a recolher passageiros diretamente na via pública?",
-    options: [
-      "Sim, em qualquer situação",
-      "Não, apenas mediante reserva na plataforma eletrónica",
-      "Sim, exceto em praças de táxis",
-    ],
-    answer: "Não, apenas mediante reserva na plataforma eletrónica",
-  },
-
-  {
-    question: "Dos seguintes combustíveis, qual é o menos poluente?",
-    options: [
-      "Gasolina sem chumbo.",
-      "Gás.",
-      "Gasolina com chumbo.",
-    ],
-    answer: "Gás.",
-  },
-
-  {
-    question: "Os motoristas TVDE podem recolher passageiros diretamente na via pública sem reserva prévia.",
-    options: [
-      "Falso",
       "Verdadeiro",
+      "Falso",
     ],
-    answer: "Falso",
+    answer: "Verdadeiro",
   },
 
   {
-    question: "A via reservada a veículos de transporte público, por veículos TVDE é:",
+    question: "Em caso de acidente com o seu veículo, deve:",
     options: [
-      "Permitido em vias de trânsito rápidas",
-      "Proibida a circulação",
-      "Permitido apenas em algumas cidades",
+      "Sair rapidamente do veículo sem avisar outros condutores.",
+      "Garantir a segurança no local, sinalizar e ligar para o 112.",
+      "Resolver a situação sozinho, sem pedir ajuda.",
     ],
-    answer: "Proibida a circulação",
+    answer: "Garantir a segurança no local, sinalizar e ligar para o 112.",
+  },
+
+
+  {
+    question: "Em caso de queimadura deve:",
+    options: [
+      "Lavar a zona afetada com água quente.",
+      "Furar as bolhas existentes.",
+      "Evitar tocar diretamente na área queimada.",
+    ],
+    answer: "Evitar tocar diretamente na área queimada.",
+  },
+
+  {
+    question: "Qual é a lotação máxima permitida para veículos utilizados no serviço TVDE?",
+    options: [
+      "7 lugares, incluindo o motorista",
+      "9 lugares, incluindo o motorista",
+      "12 lugares, incluindo o motorista",
+    ],
+    answer: "9 lugares, incluindo o motorista",
   },
 
 ];

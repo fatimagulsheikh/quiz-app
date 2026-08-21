@@ -876,3 +876,143 @@ button {
 
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+/* =========================
+   TEST SELECTION
+========================= */
+
+.test-selection {
+  margin: 35px 0;
+  padding: 25px;
+
+  border-radius: 20px;
+
+  background: #f8f9ff;
+
+  border: 1px solid #e5e7eb;
+}
+
+.test-selection h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+
+.selection-text {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.test-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.test-select-btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 17px 18px;
+
+  border: 2px solid #e5e7eb;
+
+  border-radius: 15px;
+
+  background: white;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition: 0.25s ease;
+}
+
+.test-select-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 22px rgba(79, 70, 229, 0.12);
+}
+
+.test-select-btn > span {
+  font-size: 25px;
+}
+
+.test-select-btn div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.test-select-btn strong {
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.test-select-btn small {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* Test colors */
+
+.test-one {
+  border-color: #bbf7d0;
+}
+
+.test-one:hover {
+  background: #f0fdf4;
+}
+
+.test-two {
+  border-color: #bfdbfe;
+}
+
+.test-two:hover {
+  background: #eff6ff;
+}
+
+.test-three {
+  border-color: #ddd6fe;
+}
+
+.test-three:hover {
+  background: #f5f3ff;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 450px) {
+
+  .test-selection {
+    padding: 18px;
+  }
+
+  .test-select-btn {
+    padding: 14px;
+  }
+
+  .test-select-btn > span {
+    font-size: 22px;
+  }
+
+  .test-select-btn strong {
+    font-size: 14px;
+  }
+
+}

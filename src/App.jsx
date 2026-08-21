@@ -20,19 +20,10 @@ function App() {
   // QUIZ STATES
   // =========================
 
-  // Current test: 0, 1, 2
   const [currentTest, setCurrentTest] = useState(0);
-
-  // Current question inside current test
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
-  // Selected answer
   const [selectedAnswer, setSelectedAnswer] = useState("");
-
-  // Answers of current test
   const [userAnswers, setUserAnswers] = useState([]);
-
-  // Show result
   const [showResult, setShowResult] = useState(false);
 
   // =========================
@@ -44,7 +35,9 @@ function App() {
       setIsAuthenticated(true);
       setPasswordError("");
     } else {
-      setPasswordError("Incorrect password. Please try again.");
+      setPasswordError(
+        "Incorrect password. Please try again."
+      );
     }
   };
 
@@ -102,7 +95,7 @@ function App() {
   }
 
   // =========================
-  // GET CURRENT QUESTIONS
+  // CURRENT QUESTIONS
   // =========================
 
   const startIndex =
@@ -113,7 +106,6 @@ function App() {
     startIndex + QUESTIONS_PER_TEST
   );
 
-  // Current question
   const question =
     currentQuestions[currentQuestion];
 
@@ -135,7 +127,6 @@ function App() {
       return;
     }
 
-    // Save answer
     const updatedAnswers = [...userAnswers];
 
     updatedAnswers[currentQuestion] =
@@ -143,7 +134,6 @@ function App() {
 
     setUserAnswers(updatedAnswers);
 
-    // More questions in this test
     if (
       currentQuestion <
       currentQuestions.length - 1
@@ -151,13 +141,12 @@ function App() {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer("");
     } else {
-      // Test completed
       setShowResult(true);
     }
   };
 
   // =========================
-  // CALCULATE SCORE
+  // SCORE
   // =========================
 
   const calculateScore = () => {
@@ -177,11 +166,11 @@ function App() {
   };
 
   // =========================
-  // NEXT TEST
+  // START / RETAKE TEST
   // =========================
 
-  const nextTest = () => {
-    setCurrentTest(currentTest + 1);
+  const selectTest = (testNumber) => {
+    setCurrentTest(testNumber);
     setCurrentQuestion(0);
     setSelectedAnswer("");
     setUserAnswers([]);
@@ -214,18 +203,13 @@ function App() {
       (score / currentQuestions.length) * 100
     );
 
-    // Is this the last test?
-    const isLastTest =
-      startIndex +
-        currentQuestions.length >=
-      questions.length;
-
     return (
       <div className="app">
 
         <div className="result-container">
 
-          {/* Result Header */}
+          {/* RESULT HEADER */}
+
           <div className="result-header">
 
             <h1>
@@ -233,7 +217,7 @@ function App() {
             </h1>
 
             <p>
-              You completed questions{" "}
+              Questions{" "}
               {startIndex + 1} -{" "}
               {startIndex +
                 currentQuestions.length}
@@ -241,7 +225,8 @@ function App() {
 
           </div>
 
-          {/* Result Summary */}
+          {/* RESULT SUMMARY */}
+
           <div className="result-summary">
 
             <div className="result-box">
@@ -268,7 +253,84 @@ function App() {
 
           </div>
 
-          {/* Question Review */}
+          {/* TEST SELECTION */}
+
+          <div className="test-selection">
+
+            <h2>📚 Choose Your Test</h2>
+
+            <p className="selection-text">
+              You can retake any test anytime.
+            </p>
+
+            <div className="test-buttons">
+
+              {/* TEST 1 */}
+
+              <button
+                className="test-select-btn test-one"
+                onClick={() => selectTest(0)}
+              >
+                <span>🟢</span>
+
+                <div>
+                  <strong>
+                    Questions 1–30
+                  </strong>
+
+                  <small>
+                    Retake Test 1
+                  </small>
+                </div>
+
+              </button>
+
+              {/* TEST 2 */}
+
+              <button
+                className="test-select-btn test-two"
+                onClick={() => selectTest(1)}
+              >
+                <span>🔵</span>
+
+                <div>
+                  <strong>
+                    Questions 31–60
+                  </strong>
+
+                  <small>
+                    Start Test 2
+                  </small>
+                </div>
+
+              </button>
+
+              {/* TEST 3 */}
+
+              <button
+                className="test-select-btn test-three"
+                onClick={() => selectTest(2)}
+              >
+                <span>🟣</span>
+
+                <div>
+                  <strong>
+                    Questions 61–90
+                  </strong>
+
+                  <small>
+                    Start Test 3
+                  </small>
+                </div>
+
+              </button>
+
+            </div>
+
+          </div>
+
+          {/* QUESTION REVIEW */}
+
           <div className="review">
 
             <h2>
@@ -305,7 +367,6 @@ function App() {
                       {question.question}
                     </h3>
 
-                    {/* Question Image */}
                     {question.image && (
                       <img
                         src={question.image}
@@ -360,35 +421,13 @@ function App() {
 
           </div>
 
-          {/* Buttons */}
-
-          {!isLastTest ? (
-            <button
-              className="next-btn"
-              onClick={nextTest}
-            >
-              Next 30 Questions →
-            </button>
-          ) : (
-            <div className="final-message">
-
-              <h2>
-                🏆 All Tests Completed!
-              </h2>
-
-              <p>
-                You have completed all{" "}
-                {questions.length} questions.
-              </p>
-
-            </div>
-          )}
+          {/* RESTART */}
 
           <button
             className="restart-btn"
             onClick={restartQuiz}
           >
-            🔄 Restart Quiz
+            🔄 Back to Questions 1–30
           </button>
 
         </div>
@@ -406,7 +445,8 @@ function App() {
 
       <div className="quiz-container">
 
-        {/* Header */}
+        {/* HEADER */}
+
         <div className="quiz-header">
 
           <h1>
@@ -424,16 +464,16 @@ function App() {
           </p>
 
           <p>
-            Overall:{" "}
+            Questions{" "}
+            {startIndex + 1} –{" "}
             {startIndex +
-              currentQuestion +
-              1}{" "}
-            / {questions.length}
+              currentQuestions.length}
           </p>
 
         </div>
 
-        {/* Progress */}
+        {/* PROGRESS */}
+
         <div className="progress-container">
 
           <div
@@ -449,14 +489,14 @@ function App() {
 
         </div>
 
-        {/* Question */}
+        {/* QUESTION */}
+
         <div className="question-section">
 
           <h2>
             {question.question}
           </h2>
 
-          {/* Question Image */}
           {question.image && (
             <img
               src={question.image}
@@ -467,7 +507,8 @@ function App() {
 
         </div>
 
-        {/* Options */}
+        {/* OPTIONS */}
+
         <div className="options">
 
           {question.options.map(
@@ -502,7 +543,8 @@ function App() {
 
         </div>
 
-        {/* Next Button */}
+        {/* NEXT */}
+
         <button
           className="next-btn"
           onClick={handleNext}
